@@ -23,7 +23,7 @@ namespace PracticaInteracciones
         public MainWindow()
         {
             InitializeComponent();
-            txtCuenta.Text = "Texto modificado";
+            txtCuenta.Text = "0";
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -33,7 +33,15 @@ namespace PracticaInteracciones
 
         private void sldPorcentajePropina_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            lblPorcentajePropina.Text = sldPorcentajePropina.Value.ToString();
+            lblPorcentajePropina.Text = ((int)(sldPorcentajePropina.Value)).ToString() + "%";
+
+            float cuenta = float.Parse(txtCuenta.Text);
+
+            float montoPropina = (int)(sldPorcentajePropina.Value) / 100f*cuenta;
+
+            float totalAPagar = cuenta + montoPropina;
+
+            lblTotalConPropina.Text = totalAPagar.ToString();
         }
     }
 }
